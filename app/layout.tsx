@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { manrope } from './fonts';
 import './globals.css';
+import Header from '@/components/Header/Header';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={manrope.variable}>{children}</body>
+      <body className={manrope.variable}>
+        <TanStackProvider>
+          <Header />
+          <main>{children}</main>
+        </TanStackProvider>
+      </body>
     </html>
   );
 }
