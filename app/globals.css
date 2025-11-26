@@ -1,8 +1,31 @@
+:root {
+  /* ==============Colors================= */
+
+  --main: #101828;
+  --gray: #8d929a;
+  --gray-light: #dadde1;
+  --badges: #f2f4f7;
+  --inputs: #f7f7f7;
+  --white: #fff;
+  --button: #3470ff;
+  --button-hover: #0b44cd;
+
+  /* ==============Fonts================= */
+  --font-manrope: 'Manrope', sans-serif;
+  --font-family: 'Manrope', sans-serif;
+}
+
 html,
 body {
+  font-family: var(--font-manrope);
+  font-size: 16px;
+  font-weight: 500;
   margin: 0;
   padding: 0;
   min-height: 100%;
+  line-height: 125%;
+  background-color: var(--white);
+  color: var(--main);
 }
 
 h1,
