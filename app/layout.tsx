@@ -4,7 +4,6 @@ import 'modern-normalize';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
-import Container from '@/components/Container/Container';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,10 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.variable}>
         <TanStackProvider>
-          <Container>
-            <Header />
-            <main>{children}</main>
-          </Container>
+          <Header />
+          <main>{children}</main>
         </TanStackProvider>
       </body>
     </html>
