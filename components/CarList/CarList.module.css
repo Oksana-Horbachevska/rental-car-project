@@ -1,0 +1,71 @@
+.section {
+}
+
+.carList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 48px;
+  column-gap: 32px;
+}
+
+.carItem {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - 96px) / 4);
+  height: 424px;
+}
+
+.image {
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.infoBlock_1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.brandBlock {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.rentalPrice {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.infoBlock_2 {
+}
+
+.address {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray);
+}
+
+.rentalCompany {
+}
+
+.infoBlock_3 {
+}
+
+.type {
+}
+
+.mileage {
+}
+
+.button {
+}

@@ -1,0 +1,61 @@
+import { Car } from '@/types/car';
+import css from './CarList.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import Separator from '../Separator/Separator';
+
+interface CarListProps {
+  cars: Car[];
+}
+
+const CarList = ({ cars }: CarListProps) => {
+  function formatAddress(address: string) {
+    if (!address) return '';
+
+    const parts = address.split(',').map(part => part.trim());
+
+    const city = parts[parts.length - 2];
+    const country = parts[parts.length - 1];
+
+    return (
+      <>
+        {city}
+        <Separator />
+        {country}
+      </>
+    );
+  }
+  return (
+    <div className={`container ${css.section}`}>
+      <ul className={css.carList}>
+        {cars.map(car => (
+          <li className={css.carItem} key={car.id}>
+            <Image
+              src={car.img}
+              alt={car.brand}
+              width={276}
+              height={268}
+              className={css.image}
+            />
+            <div className={css.infoBlock_1}>
+              <p className={css.brandBlock}>
+                {car.brand} {car.model}, {car.year}
+              </p>
+              <p className={css.rentalPrice}>${car.rentalPrice}</p>
+            </div>
+            <div className={css.infoBlock_2}>
+              <p className={css.address}>
+                {formatAddress(car.address)} <Separator /> {car.rentalCompany}{' '}
+                <Separator />
+                <br />
+                {car.type} <Separator /> {car.mileage}
+              </p>
+            </div>
+            <Link href={`/catalog/${car.id}`} className={css.button}></Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+export default CarList;
