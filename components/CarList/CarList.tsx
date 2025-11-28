@@ -51,7 +51,9 @@ const CarList = ({ cars }: CarListProps) => {
                 {car.type} <Separator /> {car.mileage}
               </p>
             </div>
-            <Link href={`/catalog/${car.id}`} className={css.button}></Link>
+            <Link href={`/catalog/${car.id}`} className={css.button}>
+              Read more
+            </Link>
           </li>
         ))}
       </ul>
