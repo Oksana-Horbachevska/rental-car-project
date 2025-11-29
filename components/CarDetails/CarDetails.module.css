@@ -1,0 +1,200 @@
+.carDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 72px;
+}
+
+.leftBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.imageWrapper {
+  display: block;
+  border-radius: 19px;
+  max-width: 640px;
+  height: 512px;
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+
+.image {
+  display: block;
+  object-fit: cover;
+  border-radius: 19px;
+  width: 100%;
+  height: 100%;
+}
+
+.formWrapper {
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 32px;
+  max-width: 640px;
+  background: var(--white);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+.generalInfo {
+  margin-bottom: 28px;
+}
+
+.locationWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.location {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.mileage {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+.price {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+.description {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  max-width: 263px;
+}
+
+.techInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.blockTitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 20px;
+}
+
+.blockItem {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blockItem:last-child {
+  margin-bottom: 0px;
+}
+
+.formTitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.formText {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.bookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formInput {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  border-radius: 12px;
+  padding: 12px 20px;
+  max-width: 576px;
+  height: 48px;
+  background: var(--inputs);
+  outline: none;
+  border: none;
+}
+
+.formTextarea {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  border-radius: 12px;
+  padding: 12px 20px 56px;
+  max-width: 576px;
+  height: 88px;
+  background: var(--inputs);
+  outline: none;
+  border: none;
+  margin-bottom: 24px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--white);
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+  background: var(--button);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--button-hover);
+}

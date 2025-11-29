@@ -1,0 +1,7 @@
+.pageContainer {
+  margin-bottom: 104px;
+  margin-top: 84px;
+  display: flex;
+  flex-direction: row;
+  gap: 72px;
+}

@@ -3,6 +3,7 @@ import css from './CarList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import Separator from '../Separator/Separator';
+import { formatAddress } from '@/utils/formatAddress';
 
 interface CarListProps {
   cars: Car[];
@@ -10,19 +11,7 @@ interface CarListProps {
 
 const CarList = ({ cars }: CarListProps) => {
   if (!cars || cars.length === 0) return null;
-  function formatAddress(address: string) {
-    if (!address) return '';
-    const parts = address.split(',').map(part => part.trim());
-    const city = parts[parts.length - 2];
-    const country = parts[parts.length - 1];
-    return (
-      <>
-        {city}
-        <Separator />
-        {country}
-      </>
-    );
-  }
+
   return (
     <div className={css.section}>
       <ul className={css.carList}>
