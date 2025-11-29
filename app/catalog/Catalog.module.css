@@ -1,0 +1,158 @@
+.pageContainer {
+  margin-top: 84px;
+  margin-bottom: 124px;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray);
+}
+
+.select {
+  border-radius: 12px;
+  padding: 12px 64px 12px 16px;
+  max-width: 204px;
+  height: 44px;
+  background: var(--inputs);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-block; /* Або width: 100%; якщо потрібно */
+}
+
+.selectWrapper::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23344054' d='M14.293 8.294a.991.991 0 0 1 .708-.293 1.002 1.002 0 0 1 .708.293l12 12a1 1 0 0 1-.708 1.709 1 1 0 0 1-.708-.293L15.001 10.416 3.709 21.71A1 1 0 0 1 2 21.002a1 1 0 0 1 .293-.708l12-12z'/%3E%3C/svg%3E");
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+.optionPlaceholder {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.option {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+}
+.mileageInput {
+  border-radius: 12px 0 0 12px;
+  width: 160px;
+  height: 44px;
+  background-color: var(--inputs);
+  display: block;
+  align-items: start;
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+.mileageInput:first-child {
+  border-radius: 12px 0 0 12px;
+  border-right: 1px solid var(--gray-light);
+}
+
+.mileageInput:last-child {
+  border-radius: 0 12px 12px 0;
+  border: none;
+}
+
+.mileageInput::placeholder,
+.mileageInput::-webkit-input-placeholder, /* Chrome, Safari, Edge (старий) */
+.mileageInput:-moz-placeholder,          /* Firefox (старий) */
+.mileageInput::-moz-placeholder,         /* Firefox (новий) */
+.mileageInput:-ms-input-placeholder {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  opacity: 1;
+}
+
+.searchButton {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--white);
+  border-radius: 12px;
+  padding: 12px 51px;
+  max-width: 156px;
+  height: 44px;
+  background: var(--button);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchButton:hover,
+.searchButton:focus {
+  background: var(--button-hover);
+}
+
+.loadMoreButton {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  padding: 12px 38px;
+  min-width: 156px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 80px auto 0px;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus {
+  border-color: var(--button-hover);
+}

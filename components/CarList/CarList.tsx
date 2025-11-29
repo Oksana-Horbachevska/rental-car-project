@@ -11,12 +11,9 @@ interface CarListProps {
 const CarList = ({ cars }: CarListProps) => {
   function formatAddress(address: string) {
     if (!address) return '';
-
     const parts = address.split(',').map(part => part.trim());
-
     const city = parts[parts.length - 2];
     const country = parts[parts.length - 1];
-
     return (
       <>
         {city}
@@ -26,7 +23,7 @@ const CarList = ({ cars }: CarListProps) => {
     );
   }
   return (
-    <div className={`container ${css.section}`}>
+    <div className={css.section}>
       <ul className={css.carList}>
         {cars.map(car => (
           <li className={css.carItem} key={car.id}>
@@ -39,7 +36,8 @@ const CarList = ({ cars }: CarListProps) => {
             />
             <div className={css.infoBlock_1}>
               <p className={css.brandBlock}>
-                {car.brand} {car.model}, {car.year}
+                {car.brand} <span className={css.model}>{car.model}</span>,{' '}
+                {car.year}
               </p>
               <p className={css.rentalPrice}>${car.rentalPrice}</p>
             </div>

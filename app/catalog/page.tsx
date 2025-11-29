@@ -1,13 +1,25 @@
-import CarList from '@/components/CarList/CarList';
 import { fetchBrandsServer, fetchCarsServer } from '@/lib/api/serverApi';
+import CatalogClient from './Catalog.client';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 
 async function CatalogPage() {
-  const cars = await fetchCarsServer('1', '12', '', '', '', '');
-  console.log('cars:', cars.cars);
-  const brands = await fetchBrandsServer();
-  console.log('brands:', brands);
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['cars'],
+    queryFn: () => fetchCarsServer('1', '12', '', '', '', ''),
+  });
 
-  return <CarList cars={cars.cars} />;
+  return (
+    <div>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <CatalogClient />
+      </HydrationBoundary>
+    </div>
+  );
 }
 
 export default CatalogPage;
