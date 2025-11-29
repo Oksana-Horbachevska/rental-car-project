@@ -9,6 +9,7 @@ interface CarListProps {
 }
 
 const CarList = ({ cars }: CarListProps) => {
+  if (!cars || cars.length === 0) return null;
   function formatAddress(address: string) {
     if (!address) return '';
     const parts = address.split(',').map(part => part.trim());

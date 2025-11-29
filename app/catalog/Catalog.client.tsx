@@ -2,21 +2,33 @@
 
 import CarList from '@/components/CarList/CarList';
 import { fetchBrandsClient, fetchCarsClient } from '@/lib/api/clientApi';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import css from './Catalog.module.css';
 
-const CatalogClient = async () => {
-  const { data, isLoading, error } = useQuery({
+const CatalogClient = () => {
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+  } = useInfiniteQuery({
     queryKey: ['cars'],
-    queryFn: async () => {
-      const data = await fetchCarsClient('1', '12', '', '', '', '');
-      return data;
+    queryFn: async ({ pageParam = 1 }) => {
+      return await fetchCarsClient(pageParam.toString(), '12', '', '', '', '');
     },
+    initialPageParam: 1,
+    getNextPageParam: lastPage =>
+      lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
     refetchOnMount: false,
   });
 
   if (isLoading) return 'Is loading, please wait...';
-  if (error || !data) return 'Some error is happened';
+  if (error || !data) return 'Error loading catalog';
+
+  const cars = data?.pages?.flatMap(p => p.cars) ?? [];
+  console.log('cars:', cars);
 
   return (
     <div className={`container ${css.pageContainer}`}>
@@ -76,10 +88,17 @@ const CatalogClient = async () => {
           Search
         </button>
       </div>
-      <CarList cars={data?.cars} />
-      <button type="button" className={css.loadMoreButton}>
-        Load more
-      </button>
+      <CarList cars={cars} />
+      {hasNextPage && (
+        <button
+          type="button"
+          className={css.loadMoreButton}
+          onClick={() => fetchNextPage()}
+          disabled={isFetchingNextPage}
+        >
+          {isFetchingNextPage ? 'Loading...' : 'Load more'}
+        </button>
+      )}
     </div>
   );
 };
