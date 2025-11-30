@@ -92,7 +92,8 @@ const CarDetails = (car: CarDetailsProps) => {
             <p className={css.location}>
               <svg width="16" height="16" viewBox="0 0 32 32">
                 <use href="/icons.svg#icon-Location" />
-              </svg>{' '}
+              </svg>
+              {'  '}
               {simpleFormatAddress(car.car.address)}
             </p>
             <p className={css.mileage}>Mileage:{car.car.mileage}</p>
@@ -157,8 +158,8 @@ const CarDetails = (car: CarDetailsProps) => {
           <div className={css.block3}>
             <h2 className={css.blockTitle}>Accessories and functionalities:</h2>
             <ul>
-              {car.car.accessories.map(accessory => (
-                <li className={css.blockItem}>
+              {car.car.accessories.map((accessory, index) => (
+                <li className={css.blockItem} key={index}>
                   <svg width="16" height="16" viewBox="0 0 16 16">
                     <use href="/icons.svg#icon-check-circle" />
                   </svg>

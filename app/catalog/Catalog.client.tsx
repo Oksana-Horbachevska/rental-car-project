@@ -5,6 +5,7 @@ import { fetchBrandsClient, fetchCarsClient } from '@/lib/api/clientApi';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import css from './Catalog.module.css';
 import { ChangeEventHandler, useState } from 'react';
+import * as Select from '@radix-ui/react-select';
 
 const CatalogClient = () => {
   const [formFilters, setFormFilters] = useState({
@@ -80,57 +81,67 @@ const CatalogClient = () => {
         <label htmlFor="Car_brand" className={css.label}>
           Car brand
           <div className={css.selectWrapper}>
-            <select
-              name="brand"
-              className={css.select}
-              onChange={handleFilterChange}
+            <Select.Root
               value={formFilters.brand}
+              onValueChange={value =>
+                setFormFilters(prev => ({ ...prev, brand: value }))
+              }
             >
-              <option
-                value=""
-                disabled
-                selected
-                hidden
-                className={css.optionPlaceholder}
+              <Select.Trigger className={css.radixSelectTrigger}>
+                <Select.Value placeholder="Choose a brand" />
+              </Select.Trigger>
+
+              <Select.Content
+                position="popper"
+                sideOffset={4}
+                className={css.radixSelectContent}
               >
-                Choose a brand
-              </option>
-              {brands.map((brand, index) => (
-                <option value={brand} key={index} className={css.option}>
-                  {brand}
-                </option>
-              ))}
-            </select>
+                <Select.Viewport className={css.radixSelectViewport}>
+                  {brands.map(brand => (
+                    <Select.Item
+                      key={brand}
+                      value={brand}
+                      className={css.radixSelectItem}
+                    >
+                      <Select.ItemText>{brand}</Select.ItemText>
+                    </Select.Item>
+                  ))}
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Root>
           </div>
         </label>
         <label htmlFor="Price" className={css.label}>
           Price/ 1 hour
           <div className={css.selectWrapper}>
-            <select
-              name="rentalPrice"
-              className={css.select}
-              onChange={handleFilterChange}
+            <Select.Root
               value={formFilters.rentalPrice}
+              onValueChange={value =>
+                setFormFilters(prev => ({ ...prev, rentalPrice: value }))
+              }
             >
-              <option
-                value=""
-                disabled
-                selected
-                hidden
-                className={css.optionPlaceholder}
+              <Select.Trigger className={css.radixSelectTrigger}>
+                <Select.Value placeholder="Choose a price" />
+              </Select.Trigger>
+
+              <Select.Content
+                position="popper"
+                sideOffset={4}
+                className={css.radixSelectContent}
               >
-                Choose a price
-              </option>
-              {uniquePrices.map((price, index) => (
-                <option
-                  value={price}
-                  key={price + index}
-                  className={css.option}
-                >
-                  {price}
-                </option>
-              ))}
-            </select>
+                <Select.Viewport className={css.radixSelectViewport}>
+                  {uniquePrices.map((price, index) => (
+                    <Select.Item
+                      key={price + index}
+                      value={price}
+                      className={css.radixSelectItem}
+                    >
+                      <Select.ItemText>{price}</Select.ItemText>
+                    </Select.Item>
+                  ))}
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Root>
           </div>
         </label>
         <label htmlFor="Car_mileage" className={css.label}>

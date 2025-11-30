@@ -24,22 +24,9 @@
   color: var(--gray);
 }
 
-.select {
-  border-radius: 12px;
-  padding: 12px 64px 12px 16px;
-  max-width: 204px;
-  height: 44px;
-  background: var(--inputs);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  border: none;
-}
-
 .selectWrapper {
   position: relative;
-  display: inline-block; /* Або width: 100%; якщо потрібно */
+  display: inline-block;
 }
 
 .selectWrapper::after {
@@ -51,22 +38,6 @@
   pointer-events: none;
   width: 16px;
   height: 16px;
-}
-
-.optionPlaceholder {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
-  color: var(--main);
-}
-
-.option {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
-  color: var(--gray);
 }
 
 .inputWrapper {
@@ -155,4 +126,82 @@
 .loadMoreButton:hover,
 .loadMoreButton:focus {
   border-color: var(--button-hover);
+}
+
+/* ====== Radix Select ====== */
+
+.radixSelectTrigger {
+  border-radius: 12px;
+  padding: 12px 64px 12px 16px;
+  width: 204px;
+  max-width: 204px;
+  height: 44px;
+  background: var(--inputs);
+  border: none;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+}
+
+/* ===== DROPDOWN ===== */
+.radixSelectContent {
+  border-radius: 12px;
+  padding: 8px 0;
+  z-index: 9999;
+  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
+  background: var(--white);
+  border: 1px solid var(--inputs);
+  width: 204px;
+  max-height: 272px;
+  overflow: visible 
+}
+
+/* ===== SCROLL AREA ===== */
+.radixSelectViewport {
+  max-height: 272px;
+  overflow-y: auto 
+  padding: 4px 0;
+}
+
+/* ===== ITEM ===== */
+.radixSelectItem {
+  font-family: var(--font-family);
+  padding: 10px 16px;
+  font-size: 16px;
+  line-height: 125%;
+  cursor: pointer;
+  color: var(--gray);
+}
+
+.radixSelectItem:hover,
+.radixSelectItem[data-highlighted] {
+  color: var(--main);
+  outline: none;
+  border: none;
+}
+
+/* ---------scroll ------------- */
+.radixSelectViewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.radixSelectViewport::-webkit-scrollbar-track {
+  /* background: transparent; */
+}
+
+.radixSelectViewport::-webkit-scrollbar-thumb {
+  background: var(--gray-light);
+  border-radius: 6px;
+}
+
+.radixSelectViewport::-webkit-scrollbar-thumb:hover {
+  background: var(--gray);
 }
