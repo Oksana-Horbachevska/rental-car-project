@@ -30,6 +30,7 @@ const CarDetails = (car: CarDetailsProps) => {
     values: OrderFormValues,
     actions: FormikHelpers<OrderFormValues>
   ) => {
+    console.log('Order data:', values);
     toast.success(
       `✅ Order for ${car.car.brand} ${car.car.model} successfully submitted!`
     );

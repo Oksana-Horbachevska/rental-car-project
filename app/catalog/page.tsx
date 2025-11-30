@@ -7,23 +7,29 @@ import {
 } from '@tanstack/react-query';
 import { PaginatedCarsResponse } from '@/types/car';
 
-async function CatalogPage() {
+export default async function CatalogPage() {
   const queryClient = new QueryClient();
+  const initialAppliedFilters = {
+    brand: '',
+    rentalPrice: '',
+    minMileage: '',
+    maxMileage: '',
+  };
+
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ['cars'],
-    queryFn: () => fetchCarsServer('1', '12', '', '', '', ''),
+    queryKey: ['cars', initialAppliedFilters],
+    queryFn: ({ pageParam = 1 }) =>
+      fetchCarsServer(pageParam.toString(), '12', '', '', '', ''),
+    initialPageParam: 1,
     getNextPageParam: (lastPage: PaginatedCarsResponse) =>
       lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
-    initialPageParam: 1,
   });
 
+  const dehydratedState = dehydrate(queryClient);
+
   return (
-    <div>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <CatalogClient />
-      </HydrationBoundary>
-    </div>
+    <HydrationBoundary state={dehydratedState}>
+      <CatalogClient />
+    </HydrationBoundary>
   );
 }
-
-export default CatalogPage;

@@ -14,6 +14,7 @@
   flex-direction: column;
   width: calc((100% - 96px) / 4);
   height: 424px;
+  position: relative;
 }
 
 .image {
@@ -83,6 +84,37 @@
 .button:hover,
 .button:focus {
   background-color: var(--button-hover);
+}
+
+.favoriteButton {
+  top: 16px;
+  right: 16px;
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: aliceblue;
+}
+
+.favoriteIcon {
+  width: 18px;
+  height: 18px;
+  fill: transparent;
+  stroke: var(--white);
+  stroke-width: 1.5;
+  transition: all 0.2s ease;
+}
+
+.favoriteIcon.active {
+  fill: var(--button);
+  stroke: var(--button);
 }
 
 /* Styles for Tablet devices */

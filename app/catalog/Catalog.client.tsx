@@ -4,18 +4,18 @@ import CarList from '@/components/CarList/CarList';
 import { fetchBrandsClient, fetchCarsClient } from '@/lib/api/clientApi';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import css from './Catalog.module.css';
-import { ChangeEventHandler, useState } from 'react';
+import { ChangeEventHandler } from 'react';
 import * as Select from '@radix-ui/react-select';
+import { useCarStore } from '@/lib/stores/carStore';
 
 const CatalogClient = () => {
-  const [formFilters, setFormFilters] = useState({
-    brand: '',
-    rentalPrice: '',
-    minMileage: '',
-    maxMileage: '',
-  });
+  const formFilters = useCarStore(s => s.formFilters);
+  const appliedFilters = useCarStore(s => s.appliedFilters);
+  const setFormFilter = useCarStore(s => s.setFormFilter);
+  const setAppliedFilters = useCarStore(s => s.setAppliedFilters);
+
   // --- -------------- Paginate and filter with Infinite Query------------- ---
-  const [appliedFilters, setAppliedFilters] = useState(formFilters);
+
   const {
     data,
     fetchNextPage,
@@ -27,6 +27,7 @@ const CatalogClient = () => {
   } = useInfiniteQuery({
     queryKey: ['cars', appliedFilters],
     queryFn: async ({ pageParam = 1 }) => {
+      console.log('Запитую сторінку:', pageParam);
       return await fetchCarsClient(
         pageParam.toString(),
         '12',
@@ -66,13 +67,11 @@ const CatalogClient = () => {
   > = e => {
     const { name, value } = e.target;
 
-    setFormFilters(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormFilter(name as keyof typeof formFilters, value);
   };
+
   const handleSearchClick = () => {
-    setAppliedFilters(formFilters);
+    setAppliedFilters();
   };
 
   return (
@@ -83,9 +82,7 @@ const CatalogClient = () => {
           <div className={css.selectWrapper}>
             <Select.Root
               value={formFilters.brand}
-              onValueChange={value =>
-                setFormFilters(prev => ({ ...prev, brand: value }))
-              }
+              onValueChange={value => setFormFilter('brand', value)}
             >
               <Select.Trigger className={css.radixSelectTrigger}>
                 <Select.Value placeholder="Choose a brand" />
@@ -116,9 +113,7 @@ const CatalogClient = () => {
           <div className={css.selectWrapper}>
             <Select.Root
               value={formFilters.rentalPrice}
-              onValueChange={value =>
-                setFormFilters(prev => ({ ...prev, rentalPrice: value }))
-              }
+              onValueChange={value => setFormFilter('rentalPrice', value)}
             >
               <Select.Trigger className={css.radixSelectTrigger}>
                 <Select.Value
