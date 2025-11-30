@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import mainCss from '@/app/home.module.css';
+
 import css from './Header.module.css';
 
 function Header() {
@@ -9,7 +9,12 @@ function Header() {
         <div className={css.headerContainer}>
           <div className={css.logoContainer}>
             <Link className={css.logoLink} href="/">
-              <svg className={css.logoSvg} width="102" height="16">
+              <svg
+                className={css.logoSvg}
+                width="102"
+                height="16"
+                viewBox="0 0 208 32"
+              >
                 <use href="/icons.svg#icon-Logo" />
               </svg>
             </Link>
