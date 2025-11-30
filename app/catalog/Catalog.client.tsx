@@ -121,7 +121,14 @@ const CatalogClient = () => {
               }
             >
               <Select.Trigger className={css.radixSelectTrigger}>
-                <Select.Value placeholder="Choose a price" />
+                <Select.Value
+                  placeholder="Choose a price"
+                  aria-label={formFilters.rentalPrice}
+                >
+                  {formFilters.rentalPrice
+                    ? `To $${formFilters.rentalPrice}`
+                    : ''}
+                </Select.Value>
               </Select.Trigger>
 
               <Select.Content
