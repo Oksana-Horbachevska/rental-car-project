@@ -26,7 +26,7 @@ interface CarStore {
   toggleFavorite: (car: Car) => void;
 }
 
-export const useCarStore = create<CarStore>((set, get) => ({
+export const useCarStore = create<CarStore>()((set, get) => ({
   formFilters: initialFilters,
   appliedFilters: initialFilters,
   favorites: [],
