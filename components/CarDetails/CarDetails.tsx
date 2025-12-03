@@ -4,8 +4,9 @@ import Image from 'next/image';
 import css from './CarDetails.module.css';
 import { Car } from '@/types/car';
 import { simpleFormatAddress } from '@/utils/formatAddress';
-import { Formik, Form, Field, FormikHelpers } from 'formik';
+import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
 import toast, { Toaster } from 'react-hot-toast';
+import * as Yup from 'yup';
 
 type CarDetailsProps = {
   car: Car;
@@ -17,6 +18,16 @@ interface OrderFormValues {
   date: string;
   comment: string;
 }
+
+const OrderFormSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(50, 'Name is too long')
+    .required('Name is required'),
+  email: Yup.string().email().required('Email is required'),
+  date: Yup.string(),
+  comment: Yup.string().max(1000),
+});
 
 const initialValues: OrderFormValues = {
   name: '',
@@ -32,7 +43,7 @@ const CarDetails = (car: CarDetailsProps) => {
   ) => {
     console.log('Order data:', values);
     toast.success(
-      `✅ Order for ${car.car.brand} ${car.car.model} successfully submitted!`
+      `Order for ${car.car.brand} ${car.car.model} successfully submitted!`
     );
     actions.resetForm();
   };
@@ -56,7 +67,11 @@ const CarDetails = (car: CarDetailsProps) => {
             <p className={css.formText}>
               Stay connected! We are always ready to help you.
             </p>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={OrderFormSchema}
+            >
               <Form action="" className={css.bookForm}>
                 <Field
                   type="text"
@@ -64,17 +79,32 @@ const CarDetails = (car: CarDetailsProps) => {
                   className={css.formInput}
                   placeholder="Name*"
                 />
+                <ErrorMessage
+                  name="name"
+                  component="span"
+                  className={css.error}
+                />
                 <Field
                   type="email"
                   name="email"
                   className={css.formInput}
                   placeholder="Email*"
                 />
+                <ErrorMessage
+                  name="email"
+                  component="span"
+                  className={css.error}
+                />
                 <Field
                   type="date"
                   name="date"
                   className={css.formInput}
                   placeholder="Booking date"
+                />
+                <ErrorMessage
+                  name="date"
+                  component="span"
+                  className={css.error}
                 />
                 <Field
                   as="textarea"

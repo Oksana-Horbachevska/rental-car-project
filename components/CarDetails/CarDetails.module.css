@@ -177,6 +177,7 @@
   outline: none;
   border: none;
   margin-bottom: 24px;
+  resize: none;
 }
 
 .button {
@@ -197,4 +198,11 @@
 .button:hover,
 .button:focus {
   background-color: var(--button-hover);
+}
+
+.error {
+  color: red;
+  margin-top: 0;
+  font-weight: 200;
+  font-size: 14px;
 }
