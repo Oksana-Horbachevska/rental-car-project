@@ -1,0 +1,49 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+.input {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  border-radius: 12px;
+  padding: 12px 20px;
+  width: 100%;
+  height: 48px;
+  background: var(--inputs);
+  outline: none;
+  border: none;
+}
+
+/* Можеш підправити стилі самого випадаючого календаря через селектори класів .react-datepicker */
+.react-datepicker__month-container {
+  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.08);
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  display: block;
+}
+
+:global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+:global(.react-datepicker__input-container) {
+  width: 100%;
+}
+
+:global(.react-datepicker__input-container input) {
+  width: 100%;
+  display: block;
+}

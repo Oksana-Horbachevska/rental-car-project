@@ -7,6 +7,7 @@ import { simpleFormatAddress } from '@/utils/formatAddress';
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik';
 import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
+import FormikDateField from '../FormikDateField/FormikDateField';
 
 type CarDetailsProps = {
   car: Car;
@@ -95,12 +96,7 @@ const CarDetails = (car: CarDetailsProps) => {
                   component="span"
                   className={css.error}
                 />
-                <Field
-                  type="date"
-                  name="date"
-                  className={css.formInput}
-                  placeholder="Booking date"
-                />
+                <FormikDateField name="date" placeholder="Booking date" />
                 <ErrorMessage
                   name="date"
                   component="span"

@@ -163,6 +163,10 @@
   border: none;
 }
 
+.formInputDate::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
 .formTextarea {
   font-family: var(--font-family);
   font-weight: 500;
