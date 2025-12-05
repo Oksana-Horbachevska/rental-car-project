@@ -7,7 +7,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
-  color: var(--gray);
+  color: var(--main);
   border-radius: 12px;
   padding: 12px 20px;
   width: 100%;
@@ -15,24 +15,6 @@
   background: var(--inputs);
   outline: none;
   border: none;
-}
-
-/* Можеш підправити стилі самого випадаючого календаря через селектори класів .react-datepicker */
-.react-datepicker__month-container {
-  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.08);
-}
-
-.react-datepicker-wrapper {
-  width: 100%;
-}
-
-.react-datepicker__input-container {
-  width: 100%;
-}
-
-.react-datepicker__input-container input {
-  width: 100%;
-  display: block;
 }
 
 :global(.react-datepicker-wrapper) {
@@ -46,4 +28,37 @@
 :global(.react-datepicker__input-container input) {
   width: 100%;
   display: block;
+}
+
+:global(.react-datepicker) {
+  border: 1px solid var(--button);
+  font-family: var(--second-family);
+}
+
+:global(.react-datepicker__navigation-icon) {
+  top: 4px;
+}
+
+:global(.react-datepicker__day) {
+  border-radius: 32px;
+  text-align: center;
+}
+
+:global(.react-datepicker__day--selected) {
+  border-radius: 32px;
+  background: var(--button);
+  text-align: center;
+  color: var(--inputs);
+}
+
+:global(.react-datepicker__day--selected:hover) {
+  border-radius: 32px !important;
+}
+
+:global(.react-datepicker__day:hover) {
+  border-radius: 32px !important;
+}
+
+:global(.react-datepicker__day--outside-month) {
+  color: var(--gray) !important;
 }
