@@ -212,22 +212,17 @@
   font-size: 14px;
 }
 
+/* ==========change Browser Autofill=========== */
+
 .formInput:-webkit-autofill,
 .formInput:-webkit-autofill:hover,
 .formInput:-webkit-autofill:focus,
 .formInput:-webkit-autofill:active {
-  /* 1. Колір фону: використовуємо той самий, що й для незаповненого поля */
-  /* Ваше значення: background: var(--inputs); */
   background-color: var(--inputs) !important;
 
-  /* 2. Колір тексту: використовуємо той самий, що й для незаповненого поля */
-  /* Ваше значення: color: var(--gray); */
   color: var(--main) !important;
 
-  /* 3. Обов'язково для Chrome: видаляємо внутрішні тіні */
-  /* Тінь використовується Chrome для накладання синього кольору */
   -webkit-box-shadow: 0 0 0 1000px var(--inputs) inset !important;
 
-  /* 4. Запобігаємо зміні кольору тексту */
   -webkit-text-fill-color: var(--main) !important;
 }
