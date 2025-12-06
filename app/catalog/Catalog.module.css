@@ -211,3 +211,18 @@
 .radixSelectViewport::-webkit-scrollbar-thumb:hover {
   background: var(--gray);
 }
+
+/* ==========change Browser Autofill=========== */
+
+.mileageInput:-webkit-autofill,
+.mileageInput:-webkit-autofill:hover,
+.mileageInput:-webkit-autofill:focus,
+.mileageInput:-webkit-autofill:active {
+  background-color: var(--inputs) !important;
+
+  color: var(--main) !important;
+
+  -webkit-box-shadow: 0 0 0 1000px var(--inputs) inset !important;
+
+  -webkit-text-fill-color: var(--main) !important;
+}
