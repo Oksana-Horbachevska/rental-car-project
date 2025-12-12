@@ -38,9 +38,11 @@ const CatalogClient = () => {
       );
     },
     initialPageParam: 1,
-    getNextPageParam: lastPage =>
-      lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
-    refetchOnMount: false,
+    getNextPageParam: lastPage => {
+      const current = Number(lastPage.page);
+      return current < lastPage.totalPages ? current + 1 : undefined;
+      refetchOnMount: false;
+    },
   });
   // ------------------get brands with Simple Query -----------------
   const {

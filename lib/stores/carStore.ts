@@ -32,12 +32,17 @@ export const useCarStore = create<CarStore>()((set, get) => ({
   favorites: [],
 
   setFormFilter: (name, value) =>
-    set(state => ({
-      formFilters: {
-        ...state.formFilters,
-        [name]: value,
-      },
-    })),
+    set(state => {
+      // Якщо значення не змінюється — НЕ оновлюємо стейт
+      if (state.formFilters[name] === value) return state;
+
+      return {
+        formFilters: {
+          ...state.formFilters,
+          [name]: value,
+        },
+      };
+    }),
 
   setAppliedFilters: () =>
     set(state => ({
