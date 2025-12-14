@@ -62,6 +62,9 @@
   font-size: 12px;
   line-height: 133%;
   color: var(--gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button {
@@ -125,7 +128,7 @@
   }
 
   .carItem {
-    width: calc((100% - 48px) / 3);
+    width: calc((100% - 24px) / 2);
   }
 
   .image {
