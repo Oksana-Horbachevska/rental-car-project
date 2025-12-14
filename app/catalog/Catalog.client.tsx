@@ -25,9 +25,14 @@ const CatalogClient = () => {
     error,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ['cars', appliedFilters],
+    queryKey: [
+      'cars',
+      appliedFilters.brand,
+      appliedFilters.rentalPrice,
+      appliedFilters.minMileage,
+      appliedFilters.maxMileage,
+    ],
     queryFn: async ({ pageParam = 1 }) => {
-      console.log('Запитую сторінку:', pageParam);
       return await fetchCarsClient(
         pageParam.toString(),
         '12',
@@ -96,6 +101,9 @@ const CatalogClient = () => {
                 className={css.radixSelectContent}
               >
                 <Select.Viewport className={css.radixSelectViewport}>
+                  <Select.Item value="all" className={css.radixSelectItem}>
+                    <Select.ItemText>All brands</Select.ItemText>
+                  </Select.Item>
                   {brands.map(brand => (
                     <Select.Item
                       key={brand}
